@@ -1,0 +1,20 @@
+{
+    "name": "gob025/api-slim-framework",
+    "description": "First api using Slim",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/",
+            "Config\\": "config/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Pedro Leonel"
+        }
+    ],
+    "require": {
+        "slim/slim": "4.*",
+        "slim/psr7": "^1.6"
+    }
+}
