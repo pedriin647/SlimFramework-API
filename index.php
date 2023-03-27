@@ -1,4 +1,6 @@
 <?php
+
+use App\Orcamento\Repository\OrcamentoRepository;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Factory\AppFactory;
@@ -8,10 +10,15 @@ require __DIR__ . '/vendor/autoload.php';
 
 $app = AppFactory::create();
 
-$conn = new Conexao();
+ 
 
 $app->get('/', function (Request $request, Response $response, array $args) {
-    $response->getBody()->write("Hello World with bd");
+    $conexao = new Conexao();
+
+    $orcamento = new OrcamentoRepository($conexao->exec());
+    $orcamento->listaDados();
+
+    $response->getBody()->write("hello with bd");
     return $response;
 });
 

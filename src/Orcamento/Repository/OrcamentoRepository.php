@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Orcamento\Repository;
+namespace App\Orcamento\Repository\OrcamentoRepository;
 
 use PDO;
 
@@ -8,7 +8,7 @@ class OrcamentoRepository {
 
     private PDO $conn;
     private Int $qtd = 0;
-    private Array $dados = [];
+    private array $dados = [];
 
     public function __construct(PDO $conexao)
     {
@@ -25,16 +25,19 @@ class OrcamentoRepository {
 
 
     public function listaDados(){
-
         $sql = "SELECT * FROM OrcamentoSimples";
         $stmt = $this->conn->query($sql);
 
         $this->qtd = $stmt->rowCount();
-
+        
         if($this->qtd > 0){
-           $this->dados = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            $this->dados = $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
+
         return $this;
+
     }
+
 
 }
